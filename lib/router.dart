@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'views/views.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/login',
   routes: <RouteBase>[
     GoRoute(
       path: '/',
