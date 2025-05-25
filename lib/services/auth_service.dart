@@ -7,6 +7,7 @@ class ASUnpEntityException implements Exception {
 }
 
 class ASUnAuthException implements Exception {}
+class ASInvalidTokenException implements Exception {}
 class HTTPTooManyReqException implements Exception {}
 
 class AuthService{
@@ -27,7 +28,11 @@ class AuthService{
       return response;
     } on DioException catch (e) {
       switch (e.response?.statusCode) {
-        case 422: throw ASUnpEntityException(detail: e.response?.data as Map<String, dynamic>);
+        case 422: {
+          Map<String, dynamic> data = e.response?.data;
+          if (data["error_type"] == "JWTDecodeError") throw ASInvalidTokenException();
+          throw ASUnpEntityException(detail: e.response?.data as Map<String, dynamic>);
+        }
         case 401: throw ASUnAuthException();
         case 429: throw HTTPTooManyReqException();
         default: throw Exception(e.error.toString());
