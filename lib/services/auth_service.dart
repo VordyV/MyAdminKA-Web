@@ -9,6 +9,7 @@ class ASUnpEntityException implements Exception {
 class ASUnAuthException implements Exception {}
 class ASInvalidTokenException implements Exception {}
 class HTTPTooManyReqException implements Exception {}
+class HTTPBadReqException implements Exception {}
 
 class AuthService{
 
@@ -35,6 +36,7 @@ class AuthService{
         }
         case 401: throw ASUnAuthException();
         case 429: throw HTTPTooManyReqException();
+        case 400: throw HTTPBadReqException();
         default: throw Exception(e.error.toString());
       }
     }

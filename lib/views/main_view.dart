@@ -27,13 +27,15 @@ class _MainViewState extends State<MainView> {
     } catch (e){}
   }
 
+  //FilledButton(onPressed: () => onClickLogout(context), child: Text("log out")),
+  //FilledButton(onPressed: () => onClickTestAccess(context), child: Text("test access")),
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Row(
         children: [
-          FilledButton(onPressed: () => onClickLogout(context), child: Text("log out")),
-          FilledButton(onPressed: () => onClickTestAccess(context), child: Text("test access")),
+          CNavigationRail()
         ],
       ),
       appBar: CAppBar(),

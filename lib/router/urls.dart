@@ -15,4 +15,10 @@ List<RouteBase> urls = <RouteBase>[
       return const LoginView();
     },
   ),
+  GoRoute(
+    path: '/profile',
+    builder: (BuildContext context, GoRouterState state) {
+      return const ProfileView();
+    },
+  ),
 ];

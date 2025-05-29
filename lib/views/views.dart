@@ -1,2 +1,3 @@
-export '/views/main_view.dart';
-export '/views/login_view.dart';
+export 'main_view.dart';
+export 'login_view.dart';
+export 'profile_view.dart';

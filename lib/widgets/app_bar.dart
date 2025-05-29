@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '/models/models.dart';
+import 'package:go_router/go_router.dart';
 
 class CAppBar extends StatefulWidget implements PreferredSizeWidget{
   const CAppBar({super.key});
@@ -14,6 +15,11 @@ class CAppBar extends StatefulWidget implements PreferredSizeWidget{
 class _CAppBarState extends State<CAppBar> {
 
   final User user = Get.find();
+  
+  void onClickLogout(BuildContext context) {
+    user.logout();
+    context.go("/login");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,7 @@ class _CAppBarState extends State<CAppBar> {
       leading: const Text('AppBar Demo'),
       title: Row(
         children: [
-          TextButton(onPressed: (){}, child: Text("Main")),
+          TextButton(onPressed: (){context.go("/");}, child: Text("Main")),
           TextButton(onPressed: (){}, child: Text("Admin"))
         ],
       ),
@@ -29,9 +35,14 @@ class _CAppBarState extends State<CAppBar> {
         SizedBox(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: FilledButton(onPressed: (){}, child: Text(user.info.name)),
+            child: FilledButton(onPressed: (){context.go("/profile");}, child: Text(user.info.name)),
           ),
-
+        ),
+        SizedBox(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: OutlinedButton(onPressed: () => onClickLogout(context), child: Text("Sing out")),
+          ),
         )
       ],
     );

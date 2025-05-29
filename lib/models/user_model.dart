@@ -50,6 +50,10 @@ class User {
           }
           break;
         }
+        case 401: {
+          await logout();
+          navigatorKey.currentContext!.go("/login");
+        }
       }
     }
 
@@ -73,6 +77,27 @@ class User {
     Map<String, dynamic> tokens = await authService.login(name, password);
     _accessToken = tokens['access_token'];
     await _authorize(tokens['access_token'], refreshToken: tokens['refresh_token']);
+    await update();
+    return true;
+  }
+
+  Future<bool> changePassword(String password, String newPassword) async {
+    Logger.debug("changePassword;");
+    await authService.changePassword(_accessToken, password, newPassword);
+    await update();
+    return true;
+  }
+
+  Future<bool> changeEmail(String newEmail) async {
+    Logger.debug("changeEmail;");
+    await authService.changeEmail(_accessToken, newEmail);
+    await update();
+    return true;
+  }
+
+  Future<bool> changeName(String newName) async {
+    Logger.debug("changeName;");
+    await authService.changeName(_accessToken, newName);
     await update();
     return true;
   }
@@ -113,9 +138,10 @@ class User {
 
   Future<bool> logout () async {
     Logger.debug("logout;");
+    status = UserStatuses.unAuthorized;
     _timer?.cancel();
     await config.remove("token");
-    status = UserStatuses.unAuthorized;
+    Logger.debug("\t${status.name}");
     return true;
   }
   Future<bool> update() async {

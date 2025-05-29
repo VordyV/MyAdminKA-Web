@@ -5,7 +5,7 @@ import 'middleware.dart';
 import 'navigator.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/',
   redirect: middleware,
   routes: urls,
   navigatorKey: navigatorKey
