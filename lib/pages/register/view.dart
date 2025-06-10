@@ -21,7 +21,7 @@ class RegisterPage extends GetView<RegisterController> {
           widgets.PrimaryTextField(label: Text("Re password"), isPassword: true),
         ],
         actions: [
-          TextButton(onPressed: (){}, child: Text("Log in")),
+          TextButton(onPressed: () => controller.goLoginPage(), child: Text("Log in")),
           const SizedBox(width: 5),
           FilledButton(onPressed: (){}, child: Text("Sign up"))
         ],

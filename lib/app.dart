@@ -12,9 +12,9 @@ class App extends StatelessWidget {
         initialRoute: settings.initialRoute,
         unknownRoute: GetPage(name: "/notfound", page: () => pages.ErrorPage(), binding: pages.ErrorBinding()),
         getPages: [
-          GetPage(name: '/g', page: () => pages.MainPage(), binding: pages.MainBinding()),
-          GetPage(name: '/login', page: () => pages.LoginPage(), binding: pages.LoginBinding()),
-          GetPage(name: '/register', page: () => pages.RegisterPage(), binding: pages.RegisterBinding()),
+          GetPage(name: settings.Urls.main, page: () => pages.MainPage(), binding: pages.MainBinding(), transition: Transition.noTransition),
+          GetPage(name: settings.Urls.authorization, page: () => pages.LoginPage(), binding: pages.LoginBinding(), transition: Transition.noTransition),
+          GetPage(name: settings.Urls.registration, page: () => pages.RegisterPage(), binding: pages.RegisterBinding(), transition: Transition.noTransition),
         ]
     );
   }

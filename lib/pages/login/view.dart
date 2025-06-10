@@ -4,7 +4,6 @@ import 'state.dart';
 import 'widgets.dart';
 import 'package:myadminka_web/widgets/widgets.dart' as widgets;
 
-
 class LoginPage extends GetView<LoginController> {
 
   const LoginPage({super.key});
@@ -20,7 +19,7 @@ class LoginPage extends GetView<LoginController> {
             CTextField(label: Text("Password"), isPassword: true),
           ],
           actions: [
-            TextButton(onPressed: (){}, child: Text("Sign up")),
+            TextButton(onPressed: () => controller.goRegPage(), child: Text("Sign up")),
             const SizedBox(width: 5),
             FilledButton(onPressed: (){}, child: Text("Log in"))
           ],
