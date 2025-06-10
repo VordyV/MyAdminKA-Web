@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class CTextField extends StatelessWidget {
 
   final Widget label;
+  final bool isPassword;
+  final int maxLength;
+  final bool autofocus;
   
-  const CTextField({super.key, required this.label});
+  const CTextField({super.key, this.isPassword = false, this.maxLength = 255, this.autofocus = false, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +18,14 @@ class CTextField extends StatelessWidget {
           child: label,
         ),
         TextField(
+          autofocus: autofocus,
+          obscureText: isPassword,
+          autocorrect: !isPassword,
+          enableSuggestions: !isPassword,
+          maxLength: maxLength,
           decoration: InputDecoration(
-            border: OutlineInputBorder()
+            border: OutlineInputBorder(),
+            counterText: ""
           ),
         ),
       ],
