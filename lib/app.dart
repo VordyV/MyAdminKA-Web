@@ -14,6 +14,7 @@ class App extends StatelessWidget {
         getPages: [
           GetPage(name: '/g', page: () => pages.MainPage(), binding: pages.MainBinding()),
           GetPage(name: '/login', page: () => pages.LoginPage(), binding: pages.LoginBinding()),
+          GetPage(name: '/register', page: () => pages.RegisterPage(), binding: pages.RegisterBinding()),
         ]
     );
   }
