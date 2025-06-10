@@ -18,3 +18,4 @@ class MainPage extends GetView<MainController> {
     );
   }
 }
+
